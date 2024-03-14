@@ -47,9 +47,9 @@ export default function QueryProcessor(query: string): string {
       });
 
       if (perfectSixthPowers.length > 0) {
-        return `The numbers that are both a square and a cube: ${perfectSixthPowers.join(', ')}.`;
+        return `${perfectSixthPowers.join(', ')}`;
       } else {
-        return "None of the numbers are both a square and a cube.";
+        return "None";
       }
     }
   }

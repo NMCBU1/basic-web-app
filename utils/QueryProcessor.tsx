@@ -58,7 +58,7 @@ export default function QueryProcessor(query: string): string {
     if (matches && matches.length >= 2) { // Ensure there are at least two numbers to perform subtraction
       // Assuming the format "What is X minus Y?"
       const result = Number(matches[0]) - Number(matches[1]);
-      return `${result}.`;
+      return `${result}`;
     }
   }
 
@@ -69,10 +69,21 @@ export default function QueryProcessor(query: string): string {
       const primes = numbers.filter(isPrime);
 
       if (primes.length > 0) {
-        return `The prime numbers are: ${primes.join(', ')}.`;
+        return `T${primes.join(', ')}`;
       } else {
         return "None of the numbers are prime.";
       }
+    }
+  }
+
+  if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("to the power of")) {
+    const matches = query.match(/\d+/g); // This regex matches positive integers
+    if (matches && matches.length >= 2) { // Ensure there are at least two numbers for base and exponent
+      // Assuming the format "What is X to the power of Y?"
+      const base = Number(matches[0]);
+      const exponent = Number(matches[1]);
+      const result = Math.pow(base, exponent);
+      return `${result}`;
     }
   }
   return "";

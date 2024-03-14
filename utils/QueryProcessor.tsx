@@ -90,10 +90,11 @@ export default function QueryProcessor(query: string): string {
 }
 
 // Helper function to check if a number is prime
-function isPrime(number) {
+function isPrime(number: number): boolean {
   if (number <= 1) return false; // 0 and 1 are not prime numbers
   for (let i = 2; i <= Math.sqrt(number); i++) {
     if (number % i === 0) return false;
   }
   return true;
 }
+

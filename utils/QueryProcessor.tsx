@@ -37,5 +37,22 @@ export default function QueryProcessor(query: string): string {
     }
   }
   
+  if (query.toLowerCase().includes("which of the following numbers is both a square and a cube")) {
+    const matches = query.match(/\d+/g);
+    if (matches) {
+      const numbers = matches.map(Number);
+      const perfectSixthPowers = numbers.filter(number => {
+        const sixthRoot = Math.pow(number, 1/6);
+        return sixthRoot === Math.floor(sixthRoot);
+      });
+
+      if (perfectSixthPowers.length > 0) {
+        return `The numbers that are both a square and a cube: ${perfectSixthPowers.join(', ')}.`;
+      } else {
+        return "None of the numbers are both a square and a cube.";
+      }
+    }
+  }
+
   return "";
 }

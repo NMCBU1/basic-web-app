@@ -12,11 +12,19 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
-  if (query.toLowerCase().includes("Which of the following numbers is the largest: 3, 14, 60?")) {
+  if (query.toLowerCase().includes("Which of the following numbers is the largest:")) {
     const numbers = query.match(/\d+/g).map(Number);
     const largestNumber = Math.max(...numbers).toString();
     return (
       largestNumber
+    );
+  }
+
+  if (query.toLowerCase().includes("plus")) {
+    const numbers = query.match(/\d+/g).map(Number);
+    const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    return (
+      sum.toString();
     );
   }
   return "";

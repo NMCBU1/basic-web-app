@@ -61,5 +61,28 @@ export default function QueryProcessor(query: string): string {
       return `${result}.`;
     }
   }
+
+  if (query.toLowerCase().includes("which of the following numbers are primes")) {
+    const matches = query.match(/\d+/g);
+    if (matches) {
+      const numbers = matches.map(Number);
+      const primes = numbers.filter(isPrime);
+
+      if (primes.length > 0) {
+        return `The prime numbers are: ${primes.join(', ')}.`;
+      } else {
+        return "None of the numbers are prime.";
+      }
+    }
+  }
   return "";
+}
+
+// Helper function to check if a number is prime
+function isPrime(number) {
+  if (number <= 1) return false; // 0 and 1 are not prime numbers
+  for (let i = 2; i <= Math.sqrt(number); i++) {
+    if (number % i === 0) return false;
+  }
+  return true;
 }

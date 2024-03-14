@@ -53,6 +53,13 @@ export default function QueryProcessor(query: string): string {
       }
     }
   }
-
+  if (query.toLowerCase().includes("what is") && query.includes("minus")) {
+    const matches = query.match(/-?\d+/g); // This regex matches integers, including negative numbers
+    if (matches && matches.length >= 2) { // Ensure there are at least two numbers to perform subtraction
+      // Assuming the format "What is X minus Y?"
+      const result = Number(matches[0]) - Number(matches[1]);
+      return `${result}.`;
+    }
+  }
   return "";
 }

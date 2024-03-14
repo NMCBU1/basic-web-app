@@ -11,5 +11,13 @@ export default function QueryProcessor(query: string): string {
       "Nicolas M"
     );
   }
+
+  if (query.toLowerCase().includes("Which of the following numbers is the largest: 3, 14, 60?")) {
+    const numbers = str.match(/\d+/g).map(Number);
+    const largestNumber = Math.max(...numbers).toString();
+    return (
+      largestNumber
+    );
+  }
   return "";
 }

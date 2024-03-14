@@ -15,7 +15,7 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("which of the following numbers is the largest")) {
     const numbers = query.match(/\d+/g).map(Number);
     const largestNumber = Math.max(...numbers);
-    return `The largest number is: ${largestNumber}.`;
+    return (`The largest number is: ${largestNumber}.`);
   }
 
   if (query.toLowerCase().includes("plus")) {
